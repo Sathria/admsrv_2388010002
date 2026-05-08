@@ -1,0 +1,755 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HMTI - Himpunan Mahasiswa Informatika</title>
+    <meta name="description"
+        content="Company Profile Himpunan Mahasiswa Informatika (HMTI) - Sinergi inovasi teknologi mutakhir, pengabdian masyarakat, nilai agama, dan toleransi.">
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Space+Grotesk:wght@400;600;700&display=swap"
+        rel="stylesheet">
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        :root {
+            --bg-color: #050814;
+            --text-color: #e2e8f0;
+            --primary-glow: #3b82f6;
+            /* Tech Blue */
+            --secondary-glow: #10b981;
+            /* Emerald/Green for religion/community */
+            --accent-gold: #fbbf24;
+            /* Gold for nation/tolerance */
+            --glass-bg: rgba(255, 255, 255, 0.03);
+            --glass-border: rgba(255, 255, 255, 0.08);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            overflow-x: hidden;
+            background-image:
+                radial-gradient(circle at 15% 50%, rgba(59, 130, 246, 0.15), transparent 25%),
+                radial-gradient(circle at 85% 30%, rgba(16, 185, 129, 0.15), transparent 25%);
+            background-attachment: fixed;
+        }
+
+        h1,
+        h2,
+        h3 {
+            font-family: 'Space Grotesk', sans-serif;
+        }
+
+        /* Navbar */
+        nav {
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            padding: 1.5rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(5, 8, 20, 0.7);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--glass-border);
+            transition: all 0.3s ease;
+        }
+
+        nav .logo {
+            font-size: 1.5rem;
+            font-weight: 800;
+            background: linear-gradient(to right, var(--primary-glow), var(--secondary-glow));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            letter-spacing: 2px;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 2rem;
+        }
+
+        nav a {
+            color: var(--text-color);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background: var(--primary-glow);
+            transition: width 0.3s ease;
+        }
+
+        nav a:hover {
+            color: var(--primary-glow);
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        /* Hero Section */
+        header {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+            padding: 100px 20px 0;
+        }
+
+        .hero-content {
+            z-index: 2;
+            max-width: 900px;
+        }
+
+        .hero-tag {
+            display: inline-block;
+            padding: 0.5rem 1.5rem;
+            background: var(--glass-bg);
+            border: 1px solid rgba(59, 130, 246, 0.3);
+            border-radius: 50px;
+            color: var(--primary-glow);
+            font-size: 0.85rem;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 2rem;
+            animation: fadeDown 1s ease forwards;
+        }
+
+        .hero-title {
+            font-size: clamp(2.5rem, 5vw, 4.5rem);
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(135deg, #ffffff 0%, #94a3b8 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            line-height: 1.2;
+            animation: fadeUp 1s ease forwards;
+        }
+
+        .hero-subtitle {
+            font-size: clamp(1rem, 2vw, 1.2rem);
+            color: #94a3b8;
+            margin-bottom: 2.5rem;
+            max-width: 700px;
+            margin-inline: auto;
+            animation: fadeUp 1s ease 0.2s forwards;
+            opacity: 0;
+        }
+
+        .hero-highlight {
+            color: var(--accent-gold);
+            -webkit-text-fill-color: var(--accent-gold);
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 1rem 2.5rem;
+            background: linear-gradient(45deg, var(--primary-glow), #2563eb);
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            animation: fadeUp 1s ease 0.4s forwards;
+            opacity: 0;
+            border: none;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .btn:hover::before {
+            left: 100%;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(59, 130, 246, 0.4);
+        }
+
+        /* Ambient Orbs */
+        .glow-orb {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(100px);
+            opacity: 0.4;
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        .orb-1 {
+            width: 400px;
+            height: 400px;
+            background: var(--primary-glow);
+            top: -10%;
+            left: -10%;
+            animation: float 8s ease-in-out infinite;
+        }
+
+        .orb-2 {
+            width: 300px;
+            height: 300px;
+            background: var(--secondary-glow);
+            bottom: -10%;
+            right: -5%;
+            animation: float 10s ease-in-out infinite reverse;
+        }
+
+        /* Layout */
+        section {
+            padding: 8rem 5%;
+            position: relative;
+            z-index: 2;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: clamp(2rem, 4vw, 3rem);
+            margin-bottom: 1rem;
+            color: white;
+        }
+
+        .section-title span {
+            background: linear-gradient(to right, var(--primary-glow), var(--secondary-glow));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: #94a3b8;
+            max-width: 600px;
+            margin: 0 auto 4rem;
+            font-size: 1.1rem;
+        }
+
+        /* Glass Cards */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .glass-card {
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 24px;
+            padding: 2.5rem;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .glass-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at top right, rgba(255, 255, 255, 0.05), transparent);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .glass-card:hover {
+            transform: translateY(-10px);
+            background: rgba(255, 255, 255, 0.05);
+            border-color: rgba(255, 255, 255, 0.15);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+        }
+
+        .glass-card:hover::before {
+            opacity: 1;
+        }
+
+        .card-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            display: inline-block;
+            background: linear-gradient(135deg, var(--primary-glow), #60a5fa);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .icon-community {
+            background: linear-gradient(135deg, #ec4899, #f43f5e);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .icon-religion {
+            background: linear-gradient(135deg, var(--secondary-glow), #34d399);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .icon-nation {
+            background: linear-gradient(135deg, var(--accent-gold), #f59e0b);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .glass-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: white;
+        }
+
+        .glass-card p {
+            color: #cbd5e1;
+            font-size: 0.95rem;
+        }
+
+        /* Image handling */
+        .image-banner {
+            width: 100%;
+            height: 250px;
+            border-radius: 16px;
+            object-fit: cover;
+            margin-top: 2rem;
+            filter: grayscale(20%) brightness(0.8);
+            border: 1px solid var(--glass-border);
+            transition: all 0.5s ease;
+        }
+
+        .glass-card:hover .image-banner {
+            filter: grayscale(0%) brightness(1);
+            transform: scale(1.02);
+        }
+
+        /* Programs Grid Specific */
+        .program-card {
+            padding: 0;
+            overflow: hidden;
+        }
+
+        .program-img-wrapper {
+            position: relative;
+            overflow: hidden;
+            border-radius: 24px 24px 0 0;
+        }
+
+        .program-card .image-banner {
+            margin-top: 0;
+            border-radius: 24px 24px 0 0;
+            border: none;
+            border-bottom: 1px solid var(--glass-border);
+        }
+
+        .program-content {
+            padding: 2rem;
+        }
+
+        /* Footer */
+        footer {
+            background: #02040a;
+            padding: 5rem 5% 2rem;
+            border-top: 1px solid var(--glass-border);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .footer-logo {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(to right, var(--primary-glow), var(--secondary-glow), var(--accent-gold));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .social-links {
+            margin: 2.5rem 0;
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+        }
+
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            color: var(--text-color);
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+        }
+
+        .social-links a:hover {
+            background: var(--primary-glow);
+            color: white;
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(59, 130, 246, 0.3);
+        }
+
+        /* Animations */
+        @keyframes fadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translate(0, 0);
+            }
+
+            25% {
+                transform: translate(30px, 30px);
+            }
+
+            50% {
+                transform: translate(0, 60px);
+            }
+
+            75% {
+                transform: translate(-30px, 30px);
+            }
+        }
+
+        /* Scroll Reveal Animation Classes */
+        .reveal {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.8s cubic-bezier(0.5, 0, 0, 1);
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            nav ul {
+                display: none;
+                /* Mobile menu placeholder */
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            section {
+                padding: 5rem 5%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Ambient Orbs -->
+    <div class="glow-orb orb-1"></div>
+    <div class="glow-orb orb-2"></div>
+
+    <nav id="navbar">
+        <div class="logo">HMTI</div>
+        <ul>
+            <li><a href="#home">Beranda</a></li>
+            <li><a href="#about">Tentang Kami</a></li>
+            <li><a href="#values">Nilai Dasar</a></li>
+            <li><a href="#programs">Aktivitas</a></li>
+        </ul>
+    </nav>
+
+    <header id="home">
+        <div class="hero-content">
+            <div class="hero-tag">Tech x Humanity x Divinity</div>
+            <h1 class="hero-title">Akselerasi Teknologi, <br>Berlandaskan <span class="hero-highlight">Iman &
+                    Toleransi</span></h1>
+            <p class="hero-subtitle">Himpunan Mahasiswa Informatika. Kami merajut masa depan dengan algoritma mutakhir,
+                mengayomi masyarakat dengan inovasi nyata, serta memegang teguh nilai agama dan persatuan bangsa
+                Indonesia.</p>
+            <a href="#about" class="btn">Jelajahi Profil Kami</a>
+        </div>
+    </header>
+
+    <section id="about">
+        <h2 class="section-title reveal">Identitas <span>Kami</span></h2>
+        <p class="section-subtitle reveal">Lebih dari sekadar mahasiswa IT. Kami adalah agen perubahan yang membawa
+            keseimbangan antara kecerdasan buatan dan nurani manusia.</p>
+
+        <div class="grid">
+            <div class="glass-card reveal" style="grid-column: span 1;">
+                <h3 style="color: var(--primary-glow);"><i class="fa-solid fa-rocket"
+                        style="margin-right: 10px;"></i>Visi Cemerlang</h3>
+                <p>Mewujudkan HMTI sebagai pusat keunggulan teknologi informasi yang progresif, diakui secara global,
+                    namun tetap membumi dalam pengabdian masyarakat, menjunjung tinggi toleransi kebhinnekaan, dan teguh
+                    pada ajaran agama.</p>
+                <div style="margin-top: 2rem;">
+                    <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=2070&auto=format&fit=crop"
+                        alt="Team Collaboration" class="image-banner">
+                </div>
+            </div>
+
+            <div class="glass-card reveal" style="grid-column: span 1; transition-delay: 0.2s;">
+                <h3 style="color: var(--secondary-glow);"><i class="fa-solid fa-list-check"
+                        style="margin-right: 10px;"></i>Misi Utama</h3>
+                <ul style="list-style: none; margin-top: 1.5rem; display: flex; flex-direction: column; gap: 1.5rem;">
+                    <li style="display: flex; gap: 15px;">
+                        <i class="fa-solid fa-code" style="color: var(--primary-glow); margin-top: 5px;"></i>
+                        <div>
+                            <strong style="color: white; display: block; margin-bottom: 5px;">Eksplorasi
+                                Teknologi</strong>
+                            <span style="color: #cbd5e1; font-size: 0.9rem;">Mendorong riset aktif di bidang AI, Cyber
+                                Security, dan Web3 untuk menjawab tantangan industri.</span>
+                        </div>
+                    </li>
+                    <li style="display: flex; gap: 15px;">
+                        <i class="fa-solid fa-hand-holding-heart" style="color: #ec4899; margin-top: 5px;"></i>
+                        <div>
+                            <strong style="color: white; display: block; margin-bottom: 5px;">Pengabdian
+                                Masyarakat</strong>
+                            <span style="color: #cbd5e1; font-size: 0.9rem;">Menyalurkan ilmu melalui program IT-Care
+                                untuk UMKM dan literasi digital pedesaan.</span>
+                        </div>
+                    </li>
+                    <li style="display: flex; gap: 15px;">
+                        <i class="fa-solid fa-dove" style="color: var(--accent-gold); margin-top: 5px;"></i>
+                        <div>
+                            <strong style="color: white; display: block; margin-bottom: 5px;">Harmoni Beragama &
+                                Toleransi</strong>
+                            <span style="color: #cbd5e1; font-size: 0.9rem;">Menciptakan lingkungan inklusif yang saling
+                                menghormati perbedaan suku, ras, dan agama.</span>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section id="values" style="background: rgba(0,0,0,0.2);">
+        <h2 class="section-title reveal">Pilar <span>Fundamental</span></h2>
+        <p class="section-subtitle reveal">Empat nilai dasar yang menjadi kompas bagi setiap anggota HMTI dalam berkarya
+            dan bersosialisasi.</p>
+
+        <div class="grid">
+            <div class="glass-card reveal">
+                <i class="fa-solid fa-microchip card-icon"></i>
+                <h3>Teknologi Maju</h3>
+                <p>Kami tidak hanya mengikuti tren, tapi menciptakannya. Menguasai algoritma kompleks, cloud computing,
+                    dan arsitektur software masa depan untuk inovasi tanpa batas.</p>
+            </div>
+            <div class="glass-card reveal" style="transition-delay: 0.1s;">
+                <i class="fa-solid fa-people-carry-box card-icon icon-community"></i>
+                <h3>Mengayomi Masyarakat</h3>
+                <p>Teknologi sejatinya untuk memanusiakan manusia. Kami berdedikasi membangun solusi digital yang
+                    mempermudah hidup masyarakat luas, bukan sekadar komersialisasi.</p>
+            </div>
+            <div class="glass-card reveal" style="transition-delay: 0.2s;">
+                <i class="fa-solid fa-book-quran card-icon icon-religion"></i>
+                <h3>Nilai Spiritual</h3>
+                <p>Keimanan adalah pondasi moral kami. Kami meyakini bahwa etika profesi IT yang baik lahir dari
+                    individu yang taat pada norma agama dan takut akan Tuhan.</p>
+            </div>
+            <div class="glass-card reveal" style="transition-delay: 0.3s;">
+                <i class="fa-solid fa-handshake-angle card-icon icon-nation"></i>
+                <h3>Toleransi Bangsa</h3>
+                <p>Berdiri tegak di atas asas Pancasila. Kami menolak diskriminasi, merangkul perbedaan, dan bersatu
+                    padu membangun Indonesia lewat teknologi.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="programs">
+        <h2 class="section-title reveal">Potret <span>Aksi Kami</span></h2>
+        <p class="section-subtitle reveal">Implementasi nyata dari sinergi teknologi, kepedulian sosial, dan
+            kebhinekaan.</p>
+
+        <div class="grid">
+            <div class="glass-card program-card reveal">
+                <div class="program-img-wrapper">
+                    <img src="https://images.unsplash.com/photo-1531482615713-2afd69097998?q=80&w=2070&auto=format&fit=crop"
+                        alt="Hackathon" class="image-banner">
+                </div>
+                <div class="program-content">
+                    <span
+                        style="color: var(--primary-glow); font-size: 0.8rem; font-weight: 800; text-transform: uppercase; letter-spacing: 1px;">Teknologi</span>
+                    <h3 style="margin: 0.5rem 0;">AI & Code Lab</h3>
+                    <p>Inkubator teknologi tempat mahasiswa mengembangakan purwarupa aplikasi cerdas, IoT, dan solusi
+                        cyber security mutakhir.</p>
+                </div>
+            </div>
+
+            <div class="glass-card program-card reveal" style="transition-delay: 0.2s;">
+                <div class="program-img-wrapper">
+                    <img src="https://images.unsplash.com/photo-1593113565214-80afcb4a4771?q=80&w=2070&auto=format&fit=crop"
+                        alt="Pengabdian" class="image-banner">
+                </div>
+                <div class="program-content">
+                    <span
+                        style="color: #ec4899; font-size: 0.8rem; font-weight: 800; text-transform: uppercase; letter-spacing: 1px;">Sosial</span>
+                    <h3 style="margin: 0.5rem 0;">Desa Cerdas (IT-Care)</h3>
+                    <p>Program turun tangan langsung ke desa tertinggal untuk mengajar literasi digital dan memasang
+                        infrastruktur internet swadaya.</p>
+                </div>
+            </div>
+
+            <div class="glass-card program-card reveal" style="transition-delay: 0.4s;">
+                <div class="program-img-wrapper">
+                    <img src="https://images.unsplash.com/photo-1529156069898-49953eb1b5ce?q=80&w=2070&auto=format&fit=crop"
+                        alt="Toleransi" class="image-banner">
+                </div>
+                <div class="program-content">
+                    <span
+                        style="color: var(--accent-gold); font-size: 0.8rem; font-weight: 800; text-transform: uppercase; letter-spacing: 1px;">Harmoni</span>
+                    <h3 style="margin: 0.5rem 0;">Dialog Kebangsaan</h3>
+                    <p>Forum rutin antar mahasiswa lintas agama dan budaya untuk berdiskusi, mempererat tali
+                        persaudaraan, dan doa bersama.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-logo">HMTI</div>
+        <p style="color: #94a3b8; max-width: 500px; margin: 0 auto; font-size: 1.1rem;">Mengabdi dengan barisan kode,
+            berbakti pada nusa dan bangsa, merengkuh rida Sang Pencipta.</p>
+
+        <div class="social-links">
+            <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+            <a href="#" aria-label="Github"><i class="fa-brands fa-github"></i></a>
+            <a href="#" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+            <a href="#" aria-label="Youtube"><i class="fa-brands fa-youtube"></i></a>
+        </div>
+
+        <div style="margin-top: 3rem; padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.05);">
+            <p style="color: #475569; font-size: 0.9rem;">&copy; 2026 Himpunan Mahasiswa Informatika. Inovasi & Harmoni.
+                All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Scroll Reveal Animation Functionality
+        function reveal() {
+            var reveals = document.querySelectorAll(".reveal");
+            for (var i = 0; i < reveals.length; i++) {
+                var windowHeight = window.innerHeight;
+                var elementTop = reveals[i].getBoundingClientRect().top;
+                var elementVisible = 100;
+
+                if (elementTop < windowHeight - elementVisible) {
+                    reveals[i].classList.add("active");
+                }
+            }
+        }
+
+        window.addEventListener("scroll", reveal);
+        // Trigger immediately on load
+        setTimeout(reveal, 100);
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+
+                if (targetElement) {
+                    const navHeight = document.getElementById('navbar').offsetHeight;
+                    const elementPosition = targetElement.getBoundingClientRect().top;
+                    const offsetPosition = elementPosition + window.pageYOffset - navHeight;
+
+                    window.scrollTo({
+                        top: offsetPosition,
+                        behavior: "smooth"
+                    });
+                }
+            });
+        });
+
+        // Dynamic Navbar Styling on Scroll
+        window.addEventListener('scroll', function () {
+            const nav = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                nav.style.background = 'rgba(5, 8, 20, 0.95)';
+                nav.style.boxShadow = '0 10px 30px rgba(0, 0, 0, 0.5)';
+                nav.style.padding = '1rem 5%';
+            } else {
+                nav.style.background = 'rgba(5, 8, 20, 0.7)';
+                nav.style.boxShadow = 'none';
+                nav.style.padding = '1.5rem 5%';
+            }
+        });
+    </script>
+</body>
+
+</html>
